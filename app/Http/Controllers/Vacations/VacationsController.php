@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Vacations;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Resend\Laravel\Facades\Resend;
 
 class VacationsController extends Controller
@@ -48,20 +49,37 @@ class VacationsController extends Controller
 
     public function sendMail(Request $request, User $user)
     {
-        Resend::emails()->send([
-            'from' => 'Acme <onboarding@resend.dev>',
-            'to' => 'rkirisho@gmail.com',
-            'subject' => 'Vacaciones para ' . $user->name,
-            'html' => $request->comments . '<br>' . 'Fecha de inicio: ' . $request->start_vacation . '<br>' . 'Fecha de fin: ' . $request->end_vacation,
-        ]);
+        try {
+            // Intenta enviar el correo aquí
+            Resend::emails()->send([
+                'from' => 'Acme <onboarding@resend.dev>',
+                'to' => 'rkirisho@gmail.com',
+                'subject' => 'Vacaciones para ' . Auth::user()->name,
+                'html' => view('emails.vacations', [
+                    'comments' => $request->comments,
+                    'start_vacation' => $request->start_vacation,
+                    'end_vacation' => $request->end_vacation,
+                ])->render(),
+            ]);
 
-        flash()
-            ->translate('es')
-            ->options([
-                'timeout' => 3000, // 3 seconds
-                'position' => 'bottom-right',
-            ])
-            ->addSuccess('Correo enviado correctamente', 'Vacaciones');
+            // Si el correo se envía correctamente, muestra un mensaje de éxito
+            flash()
+                ->translate('es')
+                ->options([
+                    'timeout' => 3000, // 3 seconds
+                    'position' => 'bottom-right',
+                ])
+                ->addSuccess('Correo enviado correctamente, espera una respuesta de tu supervisor', 'Vacaciones');
+        } catch (\Exception $e) {
+            // En caso de una excepción, muestra un mensaje de error
+            flash()
+                ->translate('es')
+                ->options([
+                    'timeout' => 3000, // 3 seconds
+                    'position' => 'bottom-right',
+                ])
+                ->addError('El correo no se pudo enviar. Error: ' . $e->getMessage(), 'Error');
+        }
         return redirect()->route('dashboard');
     }
 }
