@@ -58,7 +58,7 @@ class VacationsController extends Controller
         flash()
             ->translate('es')
             ->options([
-                'timeout' => 3000, // 3 seconds
+                'timeout' => 3000, // 3 seconds algo jsjsjs
                 'position' => 'bottom-right',
             ])
             ->addSuccess('Correo enviado correctamente', 'Vacaciones');
