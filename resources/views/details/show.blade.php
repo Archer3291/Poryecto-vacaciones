@@ -70,19 +70,19 @@
 @endphp
     @if ($id->end_vacation === null)
         @if ($diffAdmission->y >= 2)
-            14 días admission date
+            14 días
         @elseif ($diffAdmission->y >= 1)
-            12 días admission date
+            12 días
         @else
-            0 días admission date
+            0 días
         @endif
     @else
         @if ($diffEndVacation->y >= 2)
-            14 días end vacation
+            14 días
         @elseif ($diffEndVacation->y >= 1)
-            12 días end vacation
+            12 días
         @else
-            0 dias end vacation
+            0 dias
         @endif
     @endif
 </span>
