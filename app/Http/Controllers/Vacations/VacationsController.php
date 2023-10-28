@@ -55,7 +55,7 @@ class VacationsController extends Controller
                 'from' => 'Acme <onboarding@resend.dev>',
                 'to' => 'rkirisho@gmail.com',
                 'subject' => 'Vacaciones para ' . Auth::user()->name,
-                'html' => view('emails.vacations', [
+                'blade' => view('emails.vacations', [
                     'comments' => $request->comments,
                     'start_vacation' => $request->start_vacation,
                     'end_vacation' => $request->end_vacation,

@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'admission_date',
         'start_vacation',
         'end_vacation',
         'comments',

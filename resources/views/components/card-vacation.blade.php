@@ -36,11 +36,14 @@
         <!-- Bio -->
         <p class="text-gray-700 dark:text-white mt-2">
             @if(Auth::user()->hasRole('admin'))
-                Administrador
+                Administrador <br>
+                Fecha de ingreso {{ Auth::user()->admission_date }}
             @elseif(Auth::user()->hasRole('supervisor'))
-                Supervisor
+                Supervisor <br>
+                Fecha de ingreso {{ Auth::user()->admission_date }}
             @elseif(Auth::user()->hasRole('employee'))
-                Empleado
+                Empleado <br>
+                Fecha de ingreso {{ Auth::user()->admission_date }}
             @endif
         </p>
         <p>
