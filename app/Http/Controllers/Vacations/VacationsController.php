@@ -54,8 +54,9 @@ class VacationsController extends Controller
             Resend::emails()->send([
                 'from' => 'Acme <onboarding@resend.dev>',
                 'to' => 'rkirisho@gmail.com',
+                'cc' => Auth::user()->email,
                 'subject' => 'Vacaciones para ' . Auth::user()->name,
-                'blade' => view('emails.vacations', [
+                'html' => view('emails.vacations', [
                     'comments' => $request->comments,
                     'start_vacation' => $request->start_vacation,
                     'end_vacation' => $request->end_vacation,
