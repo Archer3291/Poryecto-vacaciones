@@ -30,6 +30,14 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+Route::get('asing_vacation', function () {
+    return view('asing_vacation', [
+        'users' => User::paginate(10),
+    ]);
+})
+    ->middleware(['auth'])
+    ->name('assign');
+
 Route::resource('/users', UserController::class)
     ->only(['index', 'edit', 'update'])
     ->middleware(['auth', 'verified'])
@@ -46,5 +54,9 @@ Route::post('/details/vacations/{id}', [VacationsController::class, 'update'])
 Route::post('/request_vacations', [VacationsController::class, 'sendMail'])
     ->middleware(['auth', 'verified'])
     ->name('vacations.mail');
+
+Route::get('/support', [VacationsController::class, 'getUserRoles'])
+    ->middleware(['auth'])
+    ->name('support');
 
 require __DIR__ . '/auth.php';

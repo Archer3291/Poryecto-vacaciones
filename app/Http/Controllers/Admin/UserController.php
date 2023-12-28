@@ -9,7 +9,8 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('can:admin.users.index')->only('index', 'show');
         $this->middleware('can:admin.users.edit')->only('edit', 'update');
     }
@@ -18,11 +19,9 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
 
-    public $search = 'lazaro';
-
     public function index()
     {
-        $users = User::paginate(10);;
+        $users = User::paginate(10);
         return view('admin.users.index', ['users' => $users]);
     }
 
@@ -52,6 +51,4 @@ class UserController extends Controller
 
         return redirect()->route('admin.users.edit', $user);
     }
-
-
 }

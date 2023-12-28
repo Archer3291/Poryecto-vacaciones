@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Resend\Laravel\Facades\Resend;
+use Illuminate\Support\Facades\DB;
 
 class VacationsController extends Controller
 {
@@ -83,4 +84,16 @@ class VacationsController extends Controller
         }
         return redirect()->route('dashboard');
     }
+
+    public function getUserRoles()
+    {
+        $users = DB::table('users as u')
+            ->select('u.id', 'u.name', 'u.email', 'r.role_id')
+            ->join('model_has_roles as r', 'r.model_id', '=', 'u.id')
+            ->where('r.role_id', 1)
+            ->get();
+
+        return view('support', compact('users'));
+    }
+
 }

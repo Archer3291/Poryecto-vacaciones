@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Assign vacations') }}
         </h2>
     </x-slot>
 
@@ -10,8 +10,13 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex flex-col gap-4">
 
-                    @can('dashboard')
-                        <x-card-vacation/>
+                    @can('admin.users.index')
+                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-hidden">
+                            <x-table-users :users="$users"/>
+                        </div>
+                        <div class="text-white">
+                            {{ $users->links() }}
+                        </div>
                     @endcan
                 </div>
             </div>

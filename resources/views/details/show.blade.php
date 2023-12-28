@@ -101,6 +101,6 @@
                 <x-vacations-in-progress :id="$id"/>
             </form>
         </div>
-        <a href="{{ route('dashboard') }}" wire:navigate><- Regresar</a>
+        <a href="{{ route('assign') }}" wire:navigate><- Regresar</a>
     </div>
 </x-app-layout>
