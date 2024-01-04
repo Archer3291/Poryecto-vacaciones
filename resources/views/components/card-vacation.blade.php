@@ -37,13 +37,22 @@
         <p class="text-gray-700 dark:text-white mt-2">
             @if(Auth::user()->hasRole('admin'))
                 Administrador <br>
-                Fecha de ingreso {{ Auth::user()->admission_date }}
+                Fecha de ingreso:
+                <strong>
+                    {{ Auth::user()->admission_date }}
+                </strong>
             @elseif(Auth::user()->hasRole('supervisor'))
                 Supervisor <br>
-                Fecha de ingreso {{ Auth::user()->admission_date }}
+                Fecha de ingreso:
+                <strong>
+                    {{ Auth::user()->admission_date }}
+                </strong>
             @elseif(Auth::user()->hasRole('employee'))
                 Empleado <br>
-                Fecha de ingreso {{ Auth::user()->admission_date }}
+                Fecha de ingreso:
+                <strong>
+                    {{ Auth::user()->admission_date }}
+                </strong>
             @endif
         </p>
         <p>
@@ -57,20 +66,25 @@
             @endphp
             @if (Auth::user()->end_vacation === null)
                 @if ($diffAdmission->y >= 2)
-                    14 días
+                    Vacaciones disponibles:
+                    <strong>14 días</strong>
                     <x-request_vacation/>
                 @elseif ($diffAdmission->y >= 1)
-                    12 días
+                    Vacaciones disponibles:
+                    <strong>12 días</strong>
                     <x-request_vacation/>
                 @else
-                    0 días
+                    Vacaciones disponibles:
+                    <strong>0 días</strong>
                 @endif
             @else
                 @if ($diffEndVacation->y >= 2)
-                    14 días
+                    Vacaciones disponibles:
+                    <strong>14 días</strong>
                     <x-request_vacation/>
                 @elseif ($diffEndVacation->y >= 1)
-                    12 días
+                    Vacaciones disponibles:
+                    <strong>12 días</strong>
                     <x-request_vacation/>
                 @elseif(Auth::user()->end_vacation >= now()->format('Y-m-d') && Auth::user()->start_vacation <= now()->format('Y-m-d'))
                     El usuario <strong> {{ Auth::user()->name }} </strong> esta de vacaciones del: <br>
@@ -78,7 +92,8 @@
                     <strong> {{ Auth::user()->end_vacation }} </strong> <br>
                     Comentarios: <strong> {{ Auth::user()->comments }} </strong>
                 @else
-                    0 dias
+                    Vacaciones disponibles:
+                    <strong>0 dias</strong>
                 @endif
             @endif
         </p>

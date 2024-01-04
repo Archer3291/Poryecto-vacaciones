@@ -12,10 +12,7 @@
 
                     @can('admin.users.index')
                         <div class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-hidden">
-                            <x-table-users :users="$users"/>
-                        </div>
-                        <div class="text-white">
-                            {{ $users->links() }}
+                            <livewire:search-users/>
                         </div>
                     @endcan
                 </div>
