@@ -74,25 +74,25 @@ new #[Layout('layouts.guest')] class extends Component {
 
 <div>
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')"/>
+    <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form wire:submit="login">
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')"/>
+            <x-input-label for="email" :value="__('Email')" />
             <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required
-                          autofocus autocomplete="username"/>
-            <x-input-error :messages="$errors->get('email')" class="mt-2"/>
+                autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')"/>
+            <x-input-label for="password" :value="__('Password')" />
 
             <x-text-input wire:model="password" id="password" class="block mt-1 w-full" type="password" name="password"
-                          required autocomplete="current-password"/>
+                required autocomplete="current-password" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2"/>
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Remember Me -->
@@ -100,28 +100,57 @@ new #[Layout('layouts.guest')] class extends Component {
             <div class="block mt-4">
                 <label for="remember" class="inline-flex items-center">
                     <input wire:model="remember" id="remember" type="checkbox"
-                           class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
-                           name="remember">
+                        class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
+                        name="remember">
                     <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
                 </label>
             </div>
 
-            <a type="button" class="bg-gray-300 p-1 rounded-md hover:bg-white duration-100 ease-in-out"
-               id="see-password">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                     stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                     id="svg">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                    <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"></path>
+            <button type="button" class="bg-gray-200 p-1 rounded-md hover:bg-gray-300 duration-100 ease-in-out"
+                id="see-password">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                    <defs>
+                        <clipPath id="IconifyId18d236760b6b0ca2d174">
+                            <rect width="24" height="12" />
+                        </clipPath>
+                        <symbol id="IconifyId18d236760b6b0ca2d175">
+                            <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M23 16.5C23 10.4249 18.0751 5.5 12 5.5C5.92487 5.5 1 10.4249 1 16.5z"
+                                clip-path="url(#IconifyId18d236760b6b0ca2d174)">
+                                <animate attributeName="d" dur="6s" keyTimes="0;0.07;0.93;1"
+                                    repeatCount="indefinite"
+                                    values="M23 16.5C23 11.5 18.0751 12 12 12C5.92487 12 1 11.5 1 16.5z;M23 16.5C23 10.4249 18.0751 5.5 12 5.5C5.92487 5.5 1 10.4249 1 16.5z;M23 16.5C23 10.4249 18.0751 5.5 12 5.5C5.92487 5.5 1 10.4249 1 16.5z;M23 16.5C23 11.5 18.0751 12 12 12C5.92487 12 1 11.5 1 16.5z" />
+                            </path>
+                        </symbol>
+                        <mask id="IconifyId18d236760b6b0ca2d176">
+                            <use href="#IconifyId18d236760b6b0ca2d175" />
+                            <use href="#IconifyId18d236760b6b0ca2d175" transform="rotate(180 12 12)" />
+                            <circle cx="12" cy="12" r="0" fill="#fff">
+                                <animate attributeName="r" dur="6s" keyTimes="0;0.03;0.97;1"
+                                    repeatCount="indefinite" values="0;3;3;0" />
+                            </circle>
+                            <g fill="none" stroke-dasharray="26" stroke-dashoffset="26" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" transform="rotate(45 13 12)">
+                                <path stroke="#000" d="M0 11h24" />
+                                <path stroke="#fff" d="M0 13h22">
+                                    <animate attributeName="d" dur="6s" repeatCount="indefinite"
+                                        values="M0 13h22;M2 13h22;M0 13h22" />
+                                </path>
+                                <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s"
+                                    values="26;0" />
+                            </g>
+                        </mask>
+                    </defs>
+                    <rect width="24" height="24" fill="#000000" mask="url(#IconifyId18d236760b6b0ca2d176)" />
                 </svg>
-            </a>
+            </button>
         </div>
 
         <div class="flex items-center justify-between mt-4">
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                   href="{{ route('register') }}" wire:navigate>
+                    href="{{ route('register') }}" wire:navigate>
                     {{ __('Register') }}
                 </a>
             @endif
@@ -139,8 +168,75 @@ new #[Layout('layouts.guest')] class extends Component {
     seePassword.addEventListener('click', () => {
         if (password.type === 'password') {
             password.type = 'text'
+            seePassword.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                    <defs>
+                        <clipPath id="IconifyId18d236760b6b0ca2d180">
+                            <rect width="24" height="12" />
+                        </clipPath>
+                        <symbol id="IconifyId18d236760b6b0ca2d181">
+                            <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M23 16.5C23 10.4249 18.0751 5.5 12 5.5C5.92487 5.5 1 10.4249 1 16.5z"
+                                clip-path="url(#IconifyId18d236760b6b0ca2d180)">
+                                <animate attributeName="d" dur="6s" keyTimes="0;0.07;0.93;1"
+                                    repeatCount="indefinite"
+                                    values="M23 16.5C23 11.5 18.0751 12 12 12C5.92487 12 1 11.5 1 16.5z;M23 16.5C23 10.4249 18.0751 5.5 12 5.5C5.92487 5.5 1 10.4249 1 16.5z;M23 16.5C23 10.4249 18.0751 5.5 12 5.5C5.92487 5.5 1 10.4249 1 16.5z;M23 16.5C23 11.5 18.0751 12 12 12C5.92487 12 1 11.5 1 16.5z" />
+                            </path>
+                        </symbol>
+                        <mask id="IconifyId18d236760b6b0ca2d182">
+                            <use href="#IconifyId18d236760b6b0ca2d181" />
+                            <use href="#IconifyId18d236760b6b0ca2d181" transform="rotate(180 12 12)" />
+                            <circle cx="12" cy="12" r="0" fill="#fff">
+                                <animate attributeName="r" dur="6s" keyTimes="0;0.03;0.97;1"
+                                    repeatCount="indefinite" values="0;3;3;0" />
+                            </circle>
+                        </mask>
+                    </defs>
+                    <rect width="24" height="24" fill="#000000" mask="url(#IconifyId18d236760b6b0ca2d182)" />
+                </svg>
+            `
+
         } else {
             password.type = 'password'
+            seePassword.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                    <defs>
+                        <clipPath id="IconifyId18d236760b6b0ca2d174">
+                            <rect width="24" height="12" />
+                        </clipPath>
+                        <symbol id="IconifyId18d236760b6b0ca2d175">
+                            <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M23 16.5C23 10.4249 18.0751 5.5 12 5.5C5.92487 5.5 1 10.4249 1 16.5z"
+                                clip-path="url(#IconifyId18d236760b6b0ca2d174)">
+                                <animate attributeName="d" dur="6s" keyTimes="0;0.07;0.93;1"
+                                    repeatCount="indefinite"
+                                    values="M23 16.5C23 11.5 18.0751 12 12 12C5.92487 12 1 11.5 1 16.5z;M23 16.5C23 10.4249 18.0751 5.5 12 5.5C5.92487 5.5 1 10.4249 1 16.5z;M23 16.5C23 10.4249 18.0751 5.5 12 5.5C5.92487 5.5 1 10.4249 1 16.5z;M23 16.5C23 11.5 18.0751 12 12 12C5.92487 12 1 11.5 1 16.5z" />
+                            </path>
+                        </symbol>
+                        <mask id="IconifyId18d236760b6b0ca2d176">
+                            <use href="#IconifyId18d236760b6b0ca2d175" />
+                            <use href="#IconifyId18d236760b6b0ca2d175" transform="rotate(180 12 12)" />
+                            <circle cx="12" cy="12" r="0" fill="#fff">
+                                <animate attributeName="r" dur="6s" keyTimes="0;0.03;0.97;1"
+                                    repeatCount="indefinite" values="0;3;3;0" />
+                            </circle>
+                            <g fill="none" stroke-dasharray="26" stroke-dashoffset="26" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" transform="rotate(45 13 12)">
+                                <path stroke="#000" d="M0 11h24" />
+                                <path stroke="#fff" d="M0 13h22">
+                                    <animate attributeName="d" dur="6s" repeatCount="indefinite"
+                                        values="M0 13h22;M2 13h22;M0 13h22" />
+                                </path>
+                                <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s"
+                                    values="26;0" />
+                            </g>
+                        </mask>
+                    </defs>
+                    <rect width="24" height="24" fill="#000000" mask="url(#IconifyId18d236760b6b0ca2d176)" />
+                </svg>
+                `
         }
     });
 </script>
