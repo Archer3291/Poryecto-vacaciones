@@ -11,7 +11,8 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.tailwindcss.com"></script>
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
 <body class="antialiased">
 <div
@@ -61,7 +62,6 @@
                                 <li>Lazaro Resendiz Donjuan</li>
                                 <li>Sandra Valeria Cano Avila</li>
                                 <li>Jose de Jesus Aleman Chavez</li>
-                                <li>Una lechuga y una tortilla fria que encontre en mi refri el otro dia</li>
                             </ul>
                         </div>
                     </div>

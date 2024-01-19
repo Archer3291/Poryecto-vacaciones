@@ -18,11 +18,7 @@ use App\Http\Controllers\Vacations\VacationsController;
 
 Route::view('/', 'welcome');
 
-Route::get('/dashboard', function () {
-    return view('dashboard', [
-        'users' => User::paginate(10),
-    ]);
-})
+Route::view('/dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
@@ -30,18 +26,14 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::get('asing_vacation', function () {
-    return view('asing_vacation', [
-        'users' => User::paginate(10),
-    ]);
-})
-    ->middleware(['auth'])
-    ->name('assign');
-
 Route::resource('/users', UserController::class)
     ->only(['index', 'edit', 'update'])
     ->middleware(['auth', 'verified'])
     ->names('admin.users');
+
+Route::view('asing_vacation', 'asing_vacation')
+    ->middleware(['auth'])
+    ->name('assign');
 
 Route::get('/details/show/{id}', [VacationsController::class, 'show'])
     ->middleware(['auth', 'verified'])

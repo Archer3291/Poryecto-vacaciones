@@ -20,6 +20,19 @@ class UserSeeder extends Seeder
             'password' => bcrypt('12345678'),
         ])->assignRole('admin');
 
-        User::factory(100)->create();
+        // Crear 100 usuarios con admission_date actual
+        User::factory(100)->create(['admission_date' => now()]);
+
+        $adminRole = 'admin';
+        $employeeRole = 'employee';
+        // Crear 5 usuarios con el rol 'admin'
+        User::factory(5)->create()->each(function ($user) use ($adminRole) {
+            $user->assignRole($adminRole);
+        });
+
+        // Asignar el rol 'employee' a los demás usuarios
+        User::whereNotIn('id', User::role('admin')->pluck('id'))->each(function ($user) use ($employeeRole) {
+            $user->assignRole($employeeRole);
+        });
     }
 }
