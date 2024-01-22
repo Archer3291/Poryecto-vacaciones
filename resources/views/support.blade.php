@@ -16,7 +16,7 @@
 
                     @foreach($users as $user)
                         <p>
-                            {{ ucfirst($user->name) }} ------------------------------
+                            {{ ucfirst($user->name) }} -
                             <a class="text-black dark:text-white hover:text-blue-600" href="mailto:{{ $user->email }}"
                                target="_blank">{{ $user->email }}</a>
                         </p>

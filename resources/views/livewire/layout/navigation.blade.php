@@ -37,7 +37,7 @@ new class extends Component {
 
                     <!-- Solo supervisot y administrador pueden ver esta opcion -->
                     @can('admin.users.index')
-                        <x-nav-link :href="route('assign')" :active="request()->routeIs('assign')" wire:navigate>
+                        <x-nav-link :href="route('assign')" :active="request()->routeIs('assign', 'details.show')" wire:navigate>
                             {{ __('Assign vacations') }}
                         </x-nav-link>
                     @endcan
@@ -113,8 +113,23 @@ new class extends Component {
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index', 'admin.users.edit')" wire:navigate>
-                Usuarios
+
+            <!-- Solo supervisot y administrador pueden ver esta opcion -->
+            @can('admin.users.index')
+                <x-responsive-nav-link :href="route('assign')" :active="request()->routeIs('assign')" wire:navigate>
+                    {{ __('Assign vacations') }}
+                </x-responsive-nav-link>
+            @endcan
+
+            {{-- Solo el administrador las puede ver --}}
+            @can('admin.users.edit')
+                <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index', 'admin.users.edit')" wire:navigate>
+                    Usuarios
+                </x-responsive-nav-link>
+            @endcan
+
+            <x-responsive-nav-link :href="route('support')" :active="request()->routeIs('support')" wire:navigate>
+                {{ __('Support') }}
             </x-responsive-nav-link>
         </div>
 
@@ -127,7 +142,8 @@ new class extends Component {
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile')" wire:navigate>
+
+                <x-responsive-nav-link :active="request()->routeIs('profile')" :href="route('profile')" wire:navigate>
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
