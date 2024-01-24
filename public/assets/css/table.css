@@ -41,7 +41,7 @@ table.dataTable thead .sorting_desc_disabled {
     background-image: url("../images/sort_desc_disabled.png");
 }
 
-/* General */
+/* Numeros */
 .dataTables_wrapper .dataTables_paginate .paginate_button {
     box-sizing: border-box;
     display: inline-block;
@@ -55,6 +55,7 @@ table.dataTable thead .sorting_desc_disabled {
     background-color: #ffffff;
 }
 
+/* Numero hover */
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     box-sizing: border-box;
     display: inline-block;
@@ -96,6 +97,8 @@ table.dataTable thead .sorting_desc_disabled {
     background-color: #ffffff;
     width: 75px;
 }
+
+/* Boton previous hover */
 #tableUsers_previous:hover {
     padding: 0.5em 0.5em;
     justify-content: center;
@@ -121,6 +124,7 @@ table.dataTable thead .sorting_desc_disabled {
     width: 75px;
 }
 
+/* Boton previous hover */
 #tableUsers_next:hover {
     padding: 0.5em 0.5em;
     justify-content: center;
@@ -132,6 +136,7 @@ table.dataTable thead .sorting_desc_disabled {
     width: 75px;
 }
 
+/* Los '...' */
 .dataTables_wrapper .dataTables_paginate .ellipsis {
     box-sizing: border-box;
     display: inline-block;
@@ -322,10 +327,6 @@ table.dataTable td.dataTables_empty {
         margin-top: 0.5em;
     }
 }
-
-
-
-
 
 /* --------------------------------------------------------------------------- */
 
